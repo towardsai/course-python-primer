@@ -114,11 +114,11 @@ class RAGChatBot:
         Generates a one-sentence summary for the given document text.
         """
         summary_prompt = f"Summarize this document in one short sentence:\n\n{doc_text}"
-        response = self.client.chat.completions.create(
-            model="gpt-4o",
-            messages=[{"role": "user", "content": summary_prompt}],
-        )
-        return response.choices[0].message.content.strip()
+        response = self.client.responses.create(
+        model="gpt-5-mini",
+        input=[{"role": "user", "content": summary_prompt}],
+    )
+        return response.output_text.strip()
 
     def answer_query(self, query: str, top_k: int = 2) -> str:
         """
