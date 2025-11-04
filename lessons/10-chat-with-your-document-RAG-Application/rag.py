@@ -137,11 +137,11 @@ If the answer is not found in the documents, say: "I can't find the answer in th
 User query: {query}
 Answer:
         """.strip()
-        chat_response = self.client.chat.completions.create(
-            model="gpt-4o",
-            messages=[{"role": "user", "content": prompt}],
+        chat_response = self.client.responses.create(
+            model="gpt-5-mini",
+            input=[{"role": "user", "content": prompt}],
         )
-        answer = chat_response.choices[0].message.content
+        answer = chat_response.output_text
         used_titles = [doc["title"] for doc in top_docs]
         doc_summaries = [self.summarize_doc(doc["content"]) for doc in top_docs]
         summary_str = "\n\nDocument Summaries:\n" + "\n".join(f"{title}: {summary}" for title, summary in zip(used_titles, doc_summaries))
