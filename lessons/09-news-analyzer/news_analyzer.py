@@ -63,8 +63,9 @@ Now, here is the text of the news article you should analyze:
     }
     try:
         response = client.chat.completions.create(
-            model="gpt-4o",  # Update the Model you want
-            messages=[system_message, user_message],
+            model="gpt-5-mini",  # Update the Model you want
+            input=[system_message, user_message],
+            response_format={"type": "json_object"})
         )
         llm_response = response.choices[0].message.content
         parsed = json.loads(llm_response)
