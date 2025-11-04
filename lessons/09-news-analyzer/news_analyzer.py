@@ -64,7 +64,7 @@ Now, here is the text of the news article you should analyze:
     try:
         response = client.responses.create(
             model="gpt-5-mini",  # Update the Model you want
-            input=[system_message, user_message]
+            input=[system_message, user_message],
         )
         llm_response = response.output_text
         parsed = json.loads(llm_response)
