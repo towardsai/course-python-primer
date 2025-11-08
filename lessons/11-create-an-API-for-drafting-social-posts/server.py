@@ -44,7 +44,7 @@ Write a short post for {platform}, summarizing this article:
     chat_completion = await asyncio.to_thread(
         client.chat.completions.create,
         messages=[{"role": "user", "content": prompt_template}],
-        model="gpt-4o",
+        model="gpt-5-mini",
     )
     return chat_completion.choices[0].message.content.strip()
 
